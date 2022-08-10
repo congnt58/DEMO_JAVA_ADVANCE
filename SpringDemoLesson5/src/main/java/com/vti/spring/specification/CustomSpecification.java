@@ -41,6 +41,8 @@ public class CustomSpecification implements Specification<Account> {
 		case KeySpecification.KEY_MAX_ID:
 			// where id <= value
 			return criteriaBuilder.lessThanOrEqualTo(root.get("id"), value.toString());
+		case KeySpecification.KEY_FULLNAME:
+			return criteriaBuilder.equal(root.get("fullName"), value.toString());
 		default:
 			break;
 		}

@@ -11,6 +11,8 @@ public class AccountFilter {
 	//@Getter(value = AccessLevel.NONE)
 	private String email;
 	
+	private String fullName;
+	
 	private Integer minID;
 	
 	private Integer maxID;
