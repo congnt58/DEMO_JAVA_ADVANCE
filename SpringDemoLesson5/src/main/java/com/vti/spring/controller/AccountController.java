@@ -10,6 +10,7 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,6 +31,7 @@ import com.vti.spring.service.IAccountService;
 @RestController
 @RequestMapping("/v1/api/accounts")
 @CrossOrigin("*")
+@Validated
 public class AccountController {
 	@Autowired
 	IAccountService service;
@@ -44,6 +46,13 @@ public class AccountController {
 	@GetMapping
 	public Page<AccountDTO> getAll(AccountFilter filter, Pageable pageable) {
 		Page<Account> pageAccount = service.getAllAccount(filter, pageable);
+		List<Account> listAcc = pageAccount.getContent();
+		
+		System.out.println("Size = " + listAcc.size());
+		
+		for (Account account : listAcc) {
+			System.out.println(account);
+		}
 		
 		List<AccountDTO> listDtos = mapper.map(pageAccount.getContent(), 
 				new TypeToken<List<AccountDTO>>() {}.getType());
@@ -66,10 +75,9 @@ public class AccountController {
 
 	// POST - Thêm
 	@PostMapping
-	public Account createAccount(
-		 @RequestBody AccountFormCreate form) {
+	public ResponseEntity<Account> createAccount(@RequestBody AccountFormCreate form) {
 		Account account = service.createAccount(form);
-		return account;
+		return new ResponseEntity<Account>(account, HttpStatus.OK);
 	}
 	
 	// PUT - Sửa

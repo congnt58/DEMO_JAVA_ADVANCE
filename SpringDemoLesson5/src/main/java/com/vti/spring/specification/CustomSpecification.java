@@ -2,6 +2,7 @@ package com.vti.spring.specification;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Join;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
@@ -20,6 +21,9 @@ public class CustomSpecification implements Specification<Account> {
 		this.key = key;
 		this.value = value;
 	}
+	
+	
+	
 
 	@Override
 	public Predicate toPredicate(Root<Account> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
@@ -43,6 +47,8 @@ public class CustomSpecification implements Specification<Account> {
 			return criteriaBuilder.lessThanOrEqualTo(root.get("id"), value.toString());
 		case KeySpecification.KEY_FULLNAME:
 			return criteriaBuilder.equal(root.get("fullName"), value.toString());
+		case KeySpecification.KEY_DP_NAME:
+			return criteriaBuilder.equal(root.get("department").get("name"), value.toString());
 		default:
 			break;
 		}

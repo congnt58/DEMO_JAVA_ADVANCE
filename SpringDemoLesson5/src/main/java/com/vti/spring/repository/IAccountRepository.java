@@ -14,6 +14,4 @@ public interface IAccountRepository extends JpaRepository<Account, Integer>, Jpa
 	Account findByUsername(String userName);
 
 	Page<Account> findByUsernameOrEmail(String username, String email, Pageable pageable);
-
-
 }

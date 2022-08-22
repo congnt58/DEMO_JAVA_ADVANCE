@@ -1,7 +1,5 @@
 package com.vti.spring.entity.dto;
 
-import com.vti.spring.entity.Account;
-
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -17,7 +15,7 @@ public class AccountDTO {
 
 	private int id;
 	
-//	@JsonProperty("uname")
+	//@JsonProperty("uname")
 	private String username;
 	
 //	@JsonProperty("mail")

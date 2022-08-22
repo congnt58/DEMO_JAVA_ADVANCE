@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="../js/test.js"></script>
+    <script src="../js/dataStorage.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+    <style>
+      th,
+      tr,
+      td {
+        border: 1px solid black;
+        border-spacing: 0px;
+      }
+
+      table {
+        border-spacing: 0px;
+      }
+
+      td {
+        padding: 5px 10px;
+      }
+      .content {
+        display: flex;
+        justify-content: center;
+      }
+
+      .header {
+        display: flex;
+        justify-content: center;
+      }
+
+      .edit {
+        color: blue;
+      }
+      .delete {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <h1>Table Account CRUD</h1>
+    </div>
+
+    <div class="content">
+      <table>
+        <thead>
+          <th>ID</th>
+          <th>
+            Name
+            <button class="material-icons" onclick="sortName()">sort</button>
+          </th>
+          <th>Department</th>
+          <th>Action</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Cong</td>
+            <td>VTI Department</td>
+            <td>
+              <span class="material-icons edit" onclick="clickEdit(1)">
+                edit
+              </span>
+              <button onclick="clickDelete(1)">Xoa</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>
